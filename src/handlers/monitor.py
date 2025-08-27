@@ -30,12 +30,11 @@ async def monitor_loop(app, chat_id: int, stop_event: asyncio.Event):
             except Exception as e:
                 cnt = err_counts.get(name, 0) + 1
                 err_counts[name] = cnt
-                if cnt % 5 == 1:
-                    await app.bot.send_message(chat_id, f"Ошибка при проверке {name}: {e!s}")
+                #if cnt % 5 == 1:
+                #    await app.bot.send_message(chat_id, f"Ошибка при проверке {name}: {e!s}")
                 continue
             else:
                 err_counts[name] = 0
-
             prev = statuses.get(name)
 
             # обновление статуса и уведомления
